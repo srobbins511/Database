@@ -11,8 +11,14 @@ using namespace std;
 class Manager
 {
     public:
-        GenBST masterFaculty;
-        GenBST masterStudent;
-        GenStack<record> rollbackLis;
+        GenBST<Faculty>* masterFaculty;
+        GenBST<Student>* masterStudent;
+        GenStack<Record>* rollbackList;
 
-}
+        Manager();
+        ~Manager();
+        int main();
+
+        void GetUserInput();
+        int atoi(std::string num);
+};

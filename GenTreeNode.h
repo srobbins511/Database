@@ -7,11 +7,11 @@ class GenTreeNode
 {
     public:
         GenTreeNode();
-        GenTreeNode(int k, T d); // k is the key, which in this example is also the data
+        GenTreeNode(int k, T* d); // k is the key, which in this example is also the data
         ~GenTreeNode(); // when creating template class destructor must be virtual
 
         int key;
-        T data;
+        T* data;
         GenTreeNode<T> *left;
         GenTreeNode<T> *right;
 };
@@ -26,10 +26,10 @@ GenTreeNode<T>::GenTreeNode()
 }
 
 template<typename T>
-GenTreeNode<T>::GenTreeNode(int k, T d)
+GenTreeNode<T>::GenTreeNode(int k, T* d)
 {
     key = k;
-    T data;
+    data = d;
     left = NULL;
     right = NULL;
 }

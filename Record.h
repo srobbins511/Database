@@ -1,3 +1,5 @@
+#ifndef RECORD_H
+#define RECORD_H
 #include <iostream>
 
 
@@ -15,3 +17,6 @@ class Record
         Record(bool student, bool op, int id, std::string information);
         ~Record();
 };
+
+
+#endif

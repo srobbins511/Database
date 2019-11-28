@@ -29,7 +29,7 @@ class GenStack
         int size;
         int mSize;
 
-        GenDoubleLinkedList<T> myList; 
+        GenDoubleLinkedList<T> *myList; 
 
 };
 

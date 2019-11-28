@@ -23,6 +23,7 @@ class Faculty
 
         std::string toString();
         Record* toRecord(bool op);
+        void print();
 
         bool operator==(Faculty f1);
         bool operator>=(Faculty f1);

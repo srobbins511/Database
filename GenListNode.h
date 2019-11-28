@@ -10,13 +10,13 @@ class GenListNode{
 
     public:
         int key;
-        T data;
+        T* data;
         GenListNode *next;
         GenListNode *prev;
         
         //constructor
         GenListNode();
-        GenListNode(int k,T d);
+        GenListNode(int k,T* d);
         ~GenListNode();
 };
 
@@ -30,7 +30,7 @@ GenListNode<T>::GenListNode()
 }
 
 template<typename T>
-GenListNode<T>::GenListNode(int k,T d)
+GenListNode<T>::GenListNode(int k,T* d)
 {
     key = k;
     data = d;
@@ -42,10 +42,5 @@ template<typename T>
 GenListNode<T>::~GenListNode()
 {
     delete data;
-}
-
-template<>
-GenListNode<int>::~GenListNode()
-{
 }
 #endif

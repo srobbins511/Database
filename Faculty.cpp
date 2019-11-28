@@ -85,3 +85,13 @@ Record* Faculty::toRecord(bool op)
     Record* temp = new Record(false,op,ID,info);
     return temp;
 }
+
+void Faculty::print()
+{
+    cout<<"ID Number: " + ID << endl;
+    cout<<"Name: " + name << endl;
+    cout<<"Level: " + level << endl;
+    cout<<"Department: " + major << endl;
+    cout<<"Advisee's: " << endl;
+    advisees->printList();
+}

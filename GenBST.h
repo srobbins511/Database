@@ -18,11 +18,11 @@ class GenBST
         bool deleteNode(int key);
 
         //Helper Functions
-        std::string toString();
         bool isEmpty();
         GenTreeNode<T>* getMin();
         GenTreeNode<T>* getMax();
         void printTree();
+        GenTreeNode<T>* getNode(int key);
         void recPrint(GenTreeNode<T> *node);
         void GenTreeBreakdown(GenTreeNode<T>* start);
         GenTreeNode<T>* getSuccessor(GenTreeNode<T> *d);
@@ -141,18 +141,6 @@ void GenBST<T>::recPrint(GenTreeNode<T> *node)
     recPrint(node->left);
     cout << node->key << endl;
     recPrint(node->right);
-}
-
-template<typename T>
-std::string GenBST<T>::toString(GenTreeNode<T> *node)
-{
-    if(node == NULL)
-    {
-        return;
-    }
-    toString(node->left);
-    return node->data.toString();
-    toString(node->right);
 }
 
 template<typename T>
@@ -316,4 +304,38 @@ GenTreeNode<T>* GenBST<T>::getSuccessor(GenTreeNode<T> *d) //d is the node to be
         successor->right = d->right;
     }
     return successor;
+}
+
+template<typename T>
+GenTreeNode<T>* GenBST<T>::getNode(int key)
+{
+    GenTreeNode<T> *current;
+    if(root == NULL) //empty tree 
+    {
+        return NULL;
+    }
+    else
+    {
+        //tree is not empty
+        current = root;
+
+        while(current->key != key)
+        {
+            if(key < current->key)
+            {
+                current = current->left;
+            }
+            else
+            {
+                current = current->right;
+            }
+
+            if(current == NULL)
+            {
+                //did not find the value
+                return NULL;
+            }
+        }
+    }
+    return current;
 }

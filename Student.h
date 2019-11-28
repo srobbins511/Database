@@ -22,6 +22,7 @@ class Student
         ~Student();
 
         std::string toString();
+        void print();
         Record* toRecord(bool op);
 
 
