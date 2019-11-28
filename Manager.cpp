@@ -27,7 +27,7 @@ void Manager::GetUserInput()
     cout<<" 2. Print All Faculty" << endl;
     cout<<" 3. Find Student" << endl;
     cout<<" 4. Find Faculty" << endl;
-    /*cout<<" 5. Find Student's Advisor" << endl;
+    cout<<" 5. Find Student's Advisor" << endl;
     cout<<" 6. Print Faculties Advisee's" << endl;
     cout<<" 7. Add Student" << endl;
     cout<<" 8. Delete Student" << endl;
@@ -35,7 +35,7 @@ void Manager::GetUserInput()
     cout<<" 10. Delete Faculty" << endl;
     cout<<" 11. Change Student Advisor" << endl;
     cout<<" 12. Remove Advisee from Faculty" << endl;
-    cout<<" 13. Rollback" << endl;*/
+    cout<<" 13. Rollback" << endl;
     cout<<" 14. Exit" << endl;
 
     cin >> ans;
@@ -60,7 +60,7 @@ void Manager::GetUserInput()
             break;
         case 4:
             cout<<"Enter the Faculty ID" << endl;
-            cin >> temp;
+            cin >> ans;
             tempID = atoi(ans);
             if(masterFaculty->search(tempID))
             {
@@ -68,10 +68,18 @@ void Manager::GetUserInput()
             }
             break;
         case 5:
+            cout<< "Enter Student ID: " << endl;
+            cin >> ans;
+            tempID = atoi(ans);
+            if(masterStudent->search(tempID))
+            {
+               cout<< masterStudent->getNode(tempID)->data->advisor << endl;
+            }
             break;
         case 6:
             break;
         case 7:
+            AddStudent();
             break;
         case 8:
             break;
@@ -138,13 +146,73 @@ int Manager::atoi(std::string num)
         {
             number+=0;
         }
+        else{
+            throw -1;
+        }
     }
     return number;
 }
 
-
-int main()
+void Manager::AddStudent()
 {
-    Manager *m = new Manager();
-    m->GetUserInput();
+    bool finished = false;
+    std::string ans;
+    std::string tempName;
+    std::string tempLevel;
+    std::string tempMajor;
+    double tempGPA;
+    int advisorID;
+    int id;
+    while(!finished){
+        cout<<"Enter ID NUMBER: " << endl;
+        cin >>ans;
+        try
+        {
+            finished = true;
+            id = atoi(ans);
+        }
+        catch(int)
+        {
+            cout<<"Unrecognized Input" << endl;
+            finished = false;
+        }
+
+    }
+    cout<< "Enter Student Name: " << endl;
+    cin >>tempName;
+
+    cout<<"Enter Student Level: \n1 for Freshman, 2 for Sophmore, 3 for Junior, 4 for Senior:" <<endl;
+    int temp;
+    cin>> temp;
+    do{
+        switch(temp)
+        {
+            case 1:
+                tempLevel = "Freshman";
+                break;
+            case 2:
+                tempLevel = "Junior";
+                break;
+            case 3:
+                tempLevel = "Sophmore";
+                break;
+            case 4:
+                tempLevel = "Senior";
+                break;
+            default:
+                finished = false;
+        }
+    }while(!finished);
+
+    cout<<"Enter Major: "<<endl;
+    cin >>tempMajor;
+
+    cout <<"Enter GPA" << endl;
+    cin >> tempGPA;
+    
+    cout << "Enter Advisor ID: " << endl;
+    cin >> advisorID;
+    Student* s1 = new Student(id,tempName,tempLevel,tempMajor,tempGPA, advisorID);
+    masterStudent->insert(id, s1);
+    
 }

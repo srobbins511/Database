@@ -18,8 +18,8 @@ class GenDoubleLinkedList
 
         void insertFront(int k,T d);
         void insertBack(int k,T d);
-        T removeFront();
-        T removeBack();
+        T* removeFront();
+        T* removeBack();
         GenListNode<T>* remove(int k);
         T deletePos(int pos);
         int find(T d);
@@ -76,7 +76,7 @@ void GenDoubleLinkedList<T>::insertFront(int k, T data)
 }
 
 template<typename T>
-T GenDoubleLinkedList<T>::removeFront()
+T* GenDoubleLinkedList<T>::removeFront()
 {
     //check if empty before attempting to remove anything
     if( front == NULL )
@@ -97,7 +97,7 @@ T GenDoubleLinkedList<T>::removeFront()
     }
     front = front->next;
     ft->next = NULL;
-    T temp = ft->data;
+    T* temp = ft->data;
     delete ft;
     size--;
     return temp;
@@ -120,7 +120,7 @@ void GenDoubleLinkedList<T>::insertBack(int k, T data)
 }
 
 template<typename T>
-T GenDoubleLinkedList<T>::removeBack()
+T* GenDoubleLinkedList<T>::removeBack()
 {
     if(isEmpty())
     {
@@ -136,7 +136,7 @@ T GenDoubleLinkedList<T>::removeBack()
         rear->prev->next = NULL;
     }
     rear = rear->prev;
-    T temp = bk->data;
+    T* temp = bk->data;
     rear->prev = NULL;
     delete bk;
     size--;
@@ -266,18 +266,6 @@ template<typename T>
 unsigned int GenDoubleLinkedList<T>::getSize()
 {
     return size;
-}
-
-template<typename T>
-std::string GenDoubleLinkedList<T>::toString()
-{
-    std::string line = "";
-    GenListNode<T> *curr = front;
-    while(curr != NULL)
-    {
-        line += curr->data + "|";
-    }
-    return line;
 }
 
 #endif

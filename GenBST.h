@@ -12,7 +12,7 @@ class GenBST
     public:
         GenBST();
         ~GenBST();
-        void insert(int k, T d);
+        void insert(int k, T* d);
         bool search(int value);
 
         bool deleteNode(int key);
@@ -88,7 +88,7 @@ bool GenBST<T>::search(int value)
 }
 
 template<typename T>
-void GenBST<T>::insert(int value, T d)
+void GenBST<T>::insert(int value, T* d)
 {
     GenTreeNode<T> *node = new GenTreeNode<T>(value, d);
     if(root == NULL)

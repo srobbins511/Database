@@ -19,6 +19,7 @@ class Manager
         ~Manager();
         int main();
 
+        void AddStudent();
         void GetUserInput();
         int atoi(std::string num);
 };

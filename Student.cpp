@@ -101,6 +101,6 @@ void Student::print()
     cout<<"Name: " + name << endl;
     cout<<"Level: " + level << endl;
     cout<<"Major: " + major << endl;
-    cout<<"GPA: " + GPA <<endl;
+    cout<<"GPA: " + to_string(GPA) <<endl;
     cout<<"Advisor: " + advisor << endl;
 }

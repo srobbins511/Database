@@ -67,21 +67,27 @@ bool Faculty::operator<(Faculty f1)
     return false;
 }
 
-std::string Faculty::toString()
+/*std::string Faculty::toString()
 {
     std::string word = "|";
     word += ID + "|";
     word += name + "|";
     word += level + "|";
     word += department + "|";
-    word += advisees->toString();
+    while(!advisees->isEmpty())
+    {
+        word += *advisees->removeFront() + "|";
+    }
     return word;
-}
+}*/
 
 Record* Faculty::toRecord(bool op)
 {
     std::string info = "|" + name + "|" + level + "|" + department + "|";
-    info += advisees->toString();
+    while(!advisees->isEmpty())
+    {
+        info += *advisees->removeFront() + "|";
+    }
     Record* temp = new Record(false,op,ID,info);
     return temp;
 }
@@ -91,7 +97,7 @@ void Faculty::print()
     cout<<"ID Number: " + ID << endl;
     cout<<"Name: " + name << endl;
     cout<<"Level: " + level << endl;
-    cout<<"Department: " + major << endl;
+    cout<<"Department: " + department << endl;
     cout<<"Advisee's: " << endl;
     advisees->printList();
 }
